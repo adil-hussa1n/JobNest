@@ -4,29 +4,62 @@ import Home from '../screens/Home/home';
 import Login from '../screens/Auth/Login/login';
 import Signup from '../screens/Auth/Signup/signup';
 import * as React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BottomBar from './BottomBar';
 import JobPost from '../screens/JobPost/JobPost';
 import Profile from '../screens/Profile/profile';
 import ChatScreen from '../screens/Chat/ChatScreen.js';
+import GetStarted from '../screens/GetStarted/GetStarted.js';
 
 const Stack = createNativeStackNavigator();
 
 const MainNavigation = () => {
+  const [routeName, setRouteName] = React.useState('');
+
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
-        
-        <Stack.Screen name ="Home" component={Home}/>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="JobPost" component={JobPost} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="ChatScreen" component={ChatScreen} />
-        
+      <Stack.Navigator
+        initialRouteName="GetStarted"
+        screenListeners={({ route }) => {
+          setRouteName(route.name);
+        }}
+      >
+        <Stack.Screen 
+          name="GetStarted" 
+          component={GetStarted} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="Home" 
+          component={Home} 
+          options={{ headerBackVisible: false }} // Hide back button
+        />
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{ headerBackVisible: false }} // Hide back button
+        />
+        <Stack.Screen 
+          name="Signup" 
+          component={Signup} 
+          options={{ headerBackVisible: false }} // Hide back button
+        />
+        <Stack.Screen 
+          name="JobPost" 
+          component={JobPost} 
+          options={{ headerBackVisible: false }} // Hide back button
+        />
+        <Stack.Screen 
+          name="Profile" 
+          component={Profile} 
+          options={{ headerBackVisible: false }} // Hide back button
+        />
+        <Stack.Screen 
+          name="ChatScreen" 
+          component={ChatScreen} 
+          options={{ headerBackVisible: false }} // Hide back button
+        />
       </Stack.Navigator>
-      <BottomBar></BottomBar>
+      {routeName !== 'GetStarted' && <BottomBar />}
     </NavigationContainer>
   );
 };

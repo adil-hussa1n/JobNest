@@ -17,7 +17,7 @@ const Login = () => {
     try {
       dispatch(signInStart());
       const formData = { email, password };
-      const response = await axios.post("http://192.168.0.113:3000/api/auth/singin", formData);
+      const response = await axios.post("http://192.168.0.121:3000/api/auth/singin", formData);
       if (response.data.status !== 'success') {
         dispatch(signInFailure());
         return;

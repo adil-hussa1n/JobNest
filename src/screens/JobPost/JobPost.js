@@ -123,9 +123,9 @@ export const JobPost = () => {
 
   return (
     <View style={styles.container}>
-      <Appbar.Header style={styles.appbar}>
+      {/* <Appbar.Header style={styles.appbar}>
         <Appbar.Content title="Job Posts" />
-      </Appbar.Header>
+      </Appbar.Header> */}
 
       <View style={styles.header}>
         <Text variant="headlineSmall" style={styles.headerText}>Find Your Best Job</Text>

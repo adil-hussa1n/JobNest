@@ -66,9 +66,9 @@ const ChatScreen = () => {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerTitle}>Chat</Text>
-      </View>
+      </View> */}
       <FlatList
         data={messages}
         renderItem={renderItem}
